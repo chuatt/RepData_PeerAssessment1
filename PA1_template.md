@@ -192,9 +192,28 @@ plot.steps.day <- ggplot(activity2, aes(x=daily.step)) +
 plot.steps.day
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+![](PA1_template_files/figure-html/Qns2a-1.png)<!-- -->
 
 2. Calculate and report the **mean** and **median** total number of steps taken per day
+
+
+```r
+# Mean total number of steps taken per day
+mean.activity
+```
+
+```
+## [1] 10766
+```
+
+```r
+# Median total number of steps taken per day
+median.activity
+```
+
+```
+## [1] 10765
+```
 
 Mean total number of steps taken per day is **10766**.
 
@@ -217,7 +236,7 @@ plot.step.interval <- ggplot(activity3, aes(x=interval,y=mean.step)) +
 plot.step.interval
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](PA1_template_files/figure-html/Qns3a-1.png)<!-- -->
 
 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -237,6 +256,16 @@ sprintf("Maximum number of steps is coming from %gth 5-min interval", optimal.st
 Note that there are a number of days/intervals where there are missing values (coded as `NA`). The presence of missing days may introduce bias into some calculations or summaries of the data.
 
 1. Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with `NA`s)
+
+
+```r
+# Total number of missing values in the dataset
+sum(is.na(activity))
+```
+
+```
+## [1] 2304
+```
 
 Ans: Total number of missing values in the dataset is **2304**.
 
@@ -282,8 +311,23 @@ summary(impute.activity)
 impute.activity2 <- summarize(group_by(impute.activity,date),daily.step=sum(steps))
 
 mean.impute   <- as.integer(mean(impute.activity2$daily.step))
-median.impute <- as.integer(median(impute.activity2$daily.step))
+mean.impute
+```
 
+```
+## [1] 10766
+```
+
+```r
+median.impute <- as.integer(median(impute.activity2$daily.step))
+median.impute
+```
+
+```
+## [1] 10766
+```
+
+```r
 # Plot histogram
 plot.steps.day <- ggplot(impute.activity2, aes(x=daily.step)) + 
   geom_histogram(binwidth = 1000, aes(y=..count.., fill=..count..)) + 
@@ -293,7 +337,7 @@ plot.steps.day <- ggplot(impute.activity2, aes(x=daily.step)) +
 plot.steps.day
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](PA1_template_files/figure-html/Qns4d-1.png)<!-- -->
 
 Ans: Mean total number of steps taken per day (after impute) is **10766**.
 
@@ -329,4 +373,4 @@ plot.weekday.interval <- ggplot(impute.df, aes(x=interval, y=mean.step, color=da
 plot.weekday.interval
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+![](PA1_template_files/figure-html/Qns5b-1.png)<!-- -->
