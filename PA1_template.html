@@ -272,6 +272,12 @@ plot.steps.day</code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Calculate and report the <strong>mean</strong> and <strong>median</strong> total number of steps taken per day</li>
 </ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Mean total number of steps taken per day</span>
+mean.activity</code></pre></div>
+<pre><code>## [1] 10766</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Median total number of steps taken per day</span>
+median.activity</code></pre></div>
+<pre><code>## [1] 10765</code></pre>
 <p>Mean total number of steps taken per day is <strong>10766</strong>.</p>
 <p>Median total number of steps taken per day is <strong>10765</strong>.</p>
 </div>
@@ -303,6 +309,9 @@ optimal.step &lt;-<span class="st"> </span>activity3<span class="op">$</span>int
 <ol style="list-style-type: decimal">
 <li>Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with <code>NA</code>s)</li>
 </ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Total number of missing values in the dataset</span>
+<span class="kw">sum</span>(<span class="kw">is.na</span>(activity))</code></pre></div>
+<pre><code>## [1] 2304</code></pre>
 <p>Ans: Total number of missing values in the dataset is <strong>2304</strong>.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.</li>
@@ -332,9 +341,12 @@ impute.activity<span class="op">$</span>interval &lt;-<span class="st"> </span><
 impute.activity2 &lt;-<span class="st"> </span><span class="kw">summarize</span>(<span class="kw">group_by</span>(impute.activity,date),<span class="dt">daily.step=</span><span class="kw">sum</span>(steps))
 
 mean.impute   &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="kw">mean</span>(impute.activity2<span class="op">$</span>daily.step))
-median.impute &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="kw">median</span>(impute.activity2<span class="op">$</span>daily.step))
-
-<span class="co"># Plot histogram</span>
+mean.impute</code></pre></div>
+<pre><code>## [1] 10766</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">median.impute &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="kw">median</span>(impute.activity2<span class="op">$</span>daily.step))
+median.impute</code></pre></div>
+<pre><code>## [1] 10766</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Plot histogram</span>
 plot.steps.day &lt;-<span class="st"> </span><span class="kw">ggplot</span>(impute.activity2, <span class="kw">aes</span>(<span class="dt">x=</span>daily.step)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">1000</span>, <span class="kw">aes</span>(<span class="dt">y=</span>..count.., <span class="dt">fill=</span>..count..)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_vline</span>(<span class="dt">xintercept=</span>mean.impute, <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">linetype=</span><span class="st">&quot;dashed&quot;</span>, <span class="dt">size=</span><span class="dv">1</span>) <span class="op">+</span>
