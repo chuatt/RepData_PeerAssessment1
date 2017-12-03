@@ -153,6 +153,7 @@ $(document).ready(function () {
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
+<p><strong>Rpub Link</strong>: <a href="https://rpubs.com/chuatt/335383">Click Here</a></p>
 <p>It is now possible to collect a large amount of data about personal movement using activity monitoring devices such as a <a href="http://www.fitbit.com">Fitbit</a>, <a href="http://www.nike.com/us/en_us/c/nikeplus-fuelband">Nike Fuelband</a>, or <a href="https://jawbone.com/up">Jawbone Up</a>. These type of devices are part of the “quantified self” movement – a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. But these data remain under-utilized both because the raw data are hard to obtain and there is a lack of statistical methods and software for processing and interpreting the data.</p>
 <p>This assignment makes use of data from a personal activity monitoring device. This device collects data at 5 minute intervals through out the day. The data consists of two months of data from an anonymous individual collected during the months of October and November, 2012 and include the number of steps taken in 5 minute intervals each day.</p>
 </div>
@@ -202,9 +203,10 @@ $(document).ready(function () {
 ## 
 ##     date</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-
-<span class="co"># Load file and have a quick look</span>
-<span class="kw">setwd</span>(<span class="st">&quot;C:/Users/TAT/Desktop/Coursera/Lectures/5) Reproducible Research/Assisgnment 1&quot;</span>)
+<span class="kw">library</span>(httpuv)</code></pre></div>
+<pre><code>## Warning: package 'httpuv' was built under R version 3.4.3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load file and have a quick look</span>
+<span class="kw">setwd</span>(<span class="st">&quot;C:/Users/TAT/Desktop/Coursera/Lectures/5) Reproducible Research/Assignment 1&quot;</span>)
 activity &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;activity.csv&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">na.strings =</span> <span class="st">&quot;NA&quot;</span>)
 
 <span class="co"># Clean up date class</span>
